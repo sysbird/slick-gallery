@@ -1,0 +1,43 @@
+@charset "utf-8";
+/*
+ Plugin Name: Slick Gallery
+ slick-gallery.css
+*/
+
+.slick-gallery {
+  width: 100%;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.slick-gallery * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.slick-gallery .item {
+  list-style: none;
+  margin: 1px;
+  padding: 0;
+  max-width: 10%;
+  float: left;
+}
+
+.slick-gallery .item img {
+  padding: 2px;
+  background: #FFF;
+  border: solid 1px #DDD;
+  max-width: 100%;
+}
+
+.slick-gallery .item a {
+  display: block;
+}
+
+/* Media queries for responsive design
+--------------------------------------------- */
+/* --- iPad Landscape --- */
+@media screen and (min-width: 640px) {
+
+}
