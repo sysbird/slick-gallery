@@ -33,14 +33,26 @@ class SlickGallery {
 	function add_script() {
 		wp_enqueue_script( 'jquery-masonry' );
 
-		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/js/slick-gallery.js';
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/justifiedGallery/jquery.justifiedGallery.min.js';
+		wp_enqueue_script( 'justifiedGallery', $filename, array( 'jquery' ), '1.0' );
+
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/magnific-popup/jquery.magnific-popup.min.js';
+		wp_enqueue_script( 'magnific-popup', $filename, array( 'jquery' ), '1.0' );
+
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/slick-gallery.js';
 		wp_enqueue_script( 'slick-gallery', $filename, array( 'jquery' ), '1.0' );
 	}
 
 	//////////////////////////////////////////
 	// add css
 	function add_style() {
-		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/css/slick-gallery.css';
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/justifiedGallery/justifiedGallery.min.css';
+		wp_enqueue_style( 'justifiedGallery', $filename, false, '1.0' );
+
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/magnific-popup/magnific-popup.css';
+		wp_enqueue_style( 'formstone', $filename, false, '1.0' );
+
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/slick-gallery.css';
 		wp_enqueue_style( 'slick-gallery', $filename, false, '1.0' );
 	}
 
@@ -63,7 +75,7 @@ class SlickGallery {
 				$src = wp_get_attachment_url( $image->ID );
 				$thumbnail = wp_get_attachment_image_src($image->ID, 'thumbnail');
 				$file = get_attached_file( $image->ID );
-				$output .= '<div class="item"><a href="' .$src .'"><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"></a></div>';
+				$output .= '<div class="item"><a href="' .$src .'" ><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"></a></div>';
   			}
 		}
 

@@ -16,24 +16,38 @@
     box-sizing: border-box;
 }
 
-.slick-gallery .item {
-  list-style: none;
-  margin: 1px;
-  padding: 0;
-  max-width: 10%;
-  float: left;
-}
-
-.slick-gallery .item img {
-  padding: 2px;
-  background: #FFF;
-  border: solid 1px #DDD;
-  max-width: 100%;
-}
-
 .slick-gallery .item a {
   display: block;
 }
+
+img.mfp-img {
+	background: #FFF;
+	padding: 5px;
+
+}
+
+.mfp-bottom-bar {
+	margin-top: 2px;
+}
+
+.mfp-bottom-bar .mfp-title {
+	display: none;
+}
+
+.mfp-close {
+	top: -41px;
+}
+
+.mfp-close:active {
+  top: -40px;
+}
+
+.mfp-arrow-right::before, .mfp-arrow-right .mfp-b,
+.mfp-arrow-left::before, .mfp-arrow-left .mfp-b {
+  border: none;
+}
+
+
 
 /* Media queries for responsive design
 --------------------------------------------- */
