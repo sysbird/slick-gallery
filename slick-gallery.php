@@ -73,14 +73,14 @@ class SlickGallery {
 		if ( $images ) {
 			foreach( $images as $image ){
 				$src = wp_get_attachment_url( $image->ID );
-				$thumbnail = wp_get_attachment_image_src( $image->ID, 'thumbnail' );
+				$thumbnail = wp_get_attachment_image_src( $image->ID, 'large' );
 				$file = get_attached_file( $image->ID );
 				$output .= '<div class="item"><a href="' .$src .'" data-gallery="gallery"><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"></a></div>';
   			}
 		}
 
-		$mobile = '';
-		if ( !wp_is_mobile() ){
+		$ile = '';
+		if ( wp_is_mobile() ){
 			$mobile = ' mobile';
 		}
 
