@@ -5,36 +5,23 @@
 jQuery(function() {
 
 	jQuery(window).load(function() {
-		jQuery(".slick-gallery").justifiedGallery({
+		// justifiedGallery
+		jQuery( ".slick-gallery" ).justifiedGallery( {
 			rowHeight : 180,
 		    lastRow : 'justify',
 		    captions: false,
-    		margins : 2}).on('jg.complete', function () {
+    		margins : 2 } ).on('jg.complete', function () {
 
-			// Zoom-gallery
-			jQuery('.slick-gallery').magnificPopup( {
-				delegate: 'a',
-				type: 'image',
-				closeOnContentClick: false,
-				mainClass: 'mfp-with-zoom mfp-img-mobile',
-				image: {
-					verticalFit: true,
-					titleSrc: function( item ) {
-						return item.el.find( 'img' ).attr( 'alt' ) + '';
-					}
-				},
-				gallery: {
-					enabled: true
-				},
-				zoom: {
-					enabled: true,
-					duration: 300, // don't foget to change the duration also in CSS
-					opener: function(element) {
-						return element.find('img');
-					}
-				}
+			// Boxer
+			var boxer_mobile = false;
+			var boxer_class = jQuery( '.slick-gallery' ).attr( 'class' );
+			if(0 <= boxer_class.indexOf( 'mobile' )){
+				boxer_mobile = true;
+			}
+
+			jQuery('.slick-gallery a').boxer( {
+				mobile: boxer_mobile
 			} );
-
 		});
 	});
 });

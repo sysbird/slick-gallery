@@ -20,34 +20,47 @@
   display: block;
 }
 
-img.mfp-img {
-	background: #FFF;
-	padding: 5px;
-
+/* Boxer Customize
+--------------------------------------------- */
+#boxer {
+  border-radius: 0;
 }
 
-.mfp-bottom-bar {
-	margin-top: 2px;
+#boxer:not(.mobile) .boxer-control.previous,
+#boxer:not(.mobile) .boxer-control.next {
+  opacity: 0;
 }
 
-.mfp-bottom-bar .mfp-title {
-	display: none;
+#boxer:not(.mobile):hover .boxer-control.previous,
+#boxer:not(.mobile):hover .boxer-control.next {
+  opacity: 1;
 }
 
-.mfp-close {
-	top: -41px;
+#boxer:not(.mobile) .boxer-control.previous.disabled,
+#boxer:not(.mobile) .boxer-control.next.disabled {
+  opacity: 0;
 }
 
-.mfp-close:active {
-  top: -40px;
+#boxer .boxer-control.next {
+  right: 10px;
 }
 
-.mfp-arrow-right::before, .mfp-arrow-right .mfp-b,
-.mfp-arrow-left::before, .mfp-arrow-left .mfp-b {
-  border: none;
+#boxer .boxer-control.previous {
+  left: 10px;
 }
 
+#boxer .boxer-meta {
+  padding-top: 0;
+}
 
+#boxer .boxer-position {
+  display: none;
+}
+
+#boxer .boxer-close {
+  right: -15px;
+  top: -15px;
+}
 
 /* Media queries for responsive design
 --------------------------------------------- */

@@ -34,10 +34,10 @@ class SlickGallery {
 		wp_enqueue_script( 'jquery-masonry' );
 
 		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/justifiedGallery/jquery.justifiedGallery.min.js';
-		wp_enqueue_script( 'justifiedGallery', $filename, array( 'jquery' ), '1.0' );
+		wp_enqueue_script( 'slick-gallery-justifiedGallery', $filename, array( 'jquery' ), '1.0' );
 
-		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/magnific-popup/jquery.magnific-popup.min.js';
-		wp_enqueue_script( 'magnific-popup', $filename, array( 'jquery' ), '1.0' );
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/Boxer/jquery.fs.boxer.js';
+		wp_enqueue_script( 'slick-gallery-Boxer', $filename, array( 'jquery' ), '1.0' );
 
 		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/slick-gallery.js';
 		wp_enqueue_script( 'slick-gallery', $filename, array( 'jquery' ), '1.0' );
@@ -47,10 +47,10 @@ class SlickGallery {
 	// add css
 	function add_style() {
 		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/justifiedGallery/justifiedGallery.min.css';
-		wp_enqueue_style( 'justifiedGallery', $filename, false, '1.0' );
+		wp_enqueue_style( 'slick-gallery-justifiedGallery', $filename, false, '1.0' );
 
-		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/magnific-popup/magnific-popup.css';
-		wp_enqueue_style( 'formstone', $filename, false, '1.0' );
+		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/Boxer/jquery.fs.boxer.min.css';
+		wp_enqueue_style( 'slick-gallery-Boxer', $filename, false, '1.0' );
 
 		$filename = plugins_url( dirname( '/' .plugin_basename( __FILE__ ) ) ).'/slick-gallery.css';
 		wp_enqueue_style( 'slick-gallery', $filename, false, '1.0' );
@@ -73,14 +73,19 @@ class SlickGallery {
 		if ( $images ) {
 			foreach( $images as $image ){
 				$src = wp_get_attachment_url( $image->ID );
-				$thumbnail = wp_get_attachment_image_src($image->ID, 'thumbnail');
+				$thumbnail = wp_get_attachment_image_src( $image->ID, 'thumbnail' );
 				$file = get_attached_file( $image->ID );
-				$output .= '<div class="item"><a href="' .$src .'" ><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"></a></div>';
+				$output .= '<div class="item"><a href="' .$src .'" data-gallery="gallery"><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"></a></div>';
   			}
 		}
 
+		$mobile = '';
+		if ( !wp_is_mobile() ){
+			$mobile = ' mobile';
+		}
+
 		if( !empty( $output ) ){
-			$output = '<div class="slick-gallery">' .$output .'</div>';
+			$output = '<div class="slick-gallery' .$mobile .'">' .$output .'</div>';
 		}
 
 		return $output;
